@@ -7,6 +7,22 @@
 </head>
 
 <body>
+
+   <div class="menu-icon" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+   </div>
+
+   <div id="menu" class="menu">
+    <a>Home</a>
+    <a href="./about.html">About</a>
+    <a>Upload a file</a>
+   </div>
+
+
+   <div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
     <div class="container">
         <h1>
         Hash Application
@@ -48,6 +64,26 @@
             const data = await response.text();
             document.getElementById('output').value = data;
         });
+    </script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const icon = document.querySelector('.menu-icon');
+            const overlay = document.getElementById('overlay');
+            menu.classList.toggle('open');
+            icon.classList.toggle('open');
+            overlay.classList.add('show');
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('menu');
+            const icon = document.querySelector('.menu-icon');
+            const overlay = document.getElementById('overlay');
+            menu.classList.toggle('open');
+            icon.classList.toggle('open');
+            overlay.classList.remove('show');
+        }
+
     </script>
 
 </body>

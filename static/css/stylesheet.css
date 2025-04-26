@@ -6,6 +6,7 @@
     --glow-active:
         inset 0 0 10px #F80,
         0 0 20px #F80;
+    --transition-menu: 0.3s ease;
 }
 
 body {
@@ -15,6 +16,70 @@ body {
     justify-content: center;
     align-items: center;
     height:100%;
+}
+
+.menu-icon {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.menu-icon div {
+    width: 30px;
+    height: 5px;
+    background-color: #1d1d1d;
+    margin: 6px 0;
+    transition: 0.3s ease-out;
+}
+
+.menu-icon.open div {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1d1d1d;
+    overflow-x: hidden;
+    transition: var(--transition-menu);
+    z-index: 30;
+    
+}
+
+.menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    white-space: nowrap;
+    color: #fff;
+    display: block;
+    transition: var(--transition-menu);
+  }
+
+.menu.open {
+    width: 200px;
+    border-right: 8px solid #333232;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 200px;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+}
+
+.overlay.show {
+    display: block;
 }
 
 .container {
