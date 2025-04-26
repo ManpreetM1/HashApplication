@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang = en>
 <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, inital-scale=1.0"/>
     <title>Hash Application</title>
     <link rel="icon" type="image/x-icon" href="../static/favicon.ico"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
@@ -66,6 +68,7 @@
         });
     </script>
     <script>
+        //Opens side menu, hides menu icon, and displays overlay, which can be clicked on to close menu
         function toggleMenu() {
             const menu = document.getElementById('menu');
             const icon = document.querySelector('.menu-icon');
@@ -75,6 +78,7 @@
             overlay.classList.add('show');
         }
 
+        //Closes side menu, shows menu icon, and removes overlay
         function closeMenu() {
             const menu = document.getElementById('menu');
             const icon = document.querySelector('.menu-icon');
