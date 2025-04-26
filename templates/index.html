@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang = en>
+<head>
+    <title>Hash Application</title>
+    <link rel="icon" type="image/x-icon" href="../static/favicon.ico"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+        Hash Application
+        </h1>
+
+        <form id="form" method="POST">
+            <select name="hash_algorithm" id="hash">
+                <option value="md5">
+                    <span>MD5</span>
+                </option>
+                <option value="sha1">
+                    <!-- img src="../static/sha1_icon.svg"/ -->
+                    <span>SHA-1</span>
+                </option>
+                <option value="sha256">
+                    <span>SHA256</span>
+                </option>
+            </select>
+            <textarea id="message" name="message" rows="4" cols="50" placeholder="Enter a message:" required>{% if not user_input -%}{%- else -%}{{ user_input }}{%- endif %}</textarea>
+            <button type="submit">Click</button>
+        </form>
+
+        <textarea id="output" name="output" rows="4" cols="50" readonly>{{ output }}</textarea>
+    </div>
+
+    <script>
+        //Uses AJAX to prevent having to reload the entire page every form submission only updating output
+        document.getElementById('form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+    
+            const response = await fetch('/', {
+                method: 'POST',
+                body: formData
+            });
+    
+            const data = await response.text();
+            document.getElementById('output').value = data;
+        });
+    </script>
+
+</body>
+</html>

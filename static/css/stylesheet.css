@@ -1,0 +1,109 @@
+:root {
+    --transition-glow: 0.2s ease;
+    --glow-hover:
+        inset 0 0 5px #F80,
+        0 0 8px #F80;
+    --glow-active:
+        inset 0 0 10px #F80,
+        0 0 20px #F80;
+}
+
+body {
+    background-color: #F80;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+}
+
+.container {
+    height: 100%;
+    padding: 0px 5%;
+    background-color: #1d1d1d;
+    display: flex;
+    width: min(80%, 650px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 1000px;
+    border-radius: 30px;
+    border:8px solid #333232;
+    /*box-shadow: 0 0 60px 30px #FFF, 
+    0 0 100px 60px #F0F,
+    0 0 140px 90px #0FF,
+    inset 60px 0 20px #F0F,
+    inset -60px 0 20px #0FF;*/
+}
+
+h1 {
+    color:#F80;
+    text-align: center;
+    justify-self: flex-start;
+    /*border: 2px solid #F80;*/
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    max-width: 500px;
+}
+
+select {
+    outline: none;
+    width:20%; 
+    background-color: #1d1d1d;
+    color:#F80;
+    border: 2px solid #F80;
+    border-radius: 10px;
+    transition: var(--transition-glow)
+}
+
+select:hover {
+    box-shadow: var(--glow-hover)
+}
+
+select:focus {
+    box-shadow: var(--glow-active)
+}
+
+textarea {
+    outline:none;
+    width:100%;
+    max-width: 500px;
+    margin: 5% 5px;
+    min-height:250px;
+    text-align:left;
+    border-radius: 10px;
+    border: 3px solid #FFF;
+}
+
+textarea:hover {
+    border:3px solid rgb(247, 202, 150);
+}
+
+textarea:focus {
+    border: 3px solid #F80;
+}
+
+button {
+    text-align: center;
+    margin:5% auto;
+    width:20%; 
+    font-family: inherit;
+    background-color: #1d1d1d;
+    color:#F80;
+    border-radius: 10px;
+    border: 2px solid #F80;
+    transition: var(--transition-glow)
+}
+
+button:hover {
+    box-shadow: var(--glow-hover)
+}
+
+button:active {
+    box-shadow: var(--glow-active)
+}

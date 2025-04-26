@@ -1,0 +1,9 @@
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="180" height="180" rx="25" ry="25" 
+        fill="none" stroke="#2c2230" stroke-width="10"/>
+  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle"
+        font-family="Arial, sans-serif" font-size="40" fill="#2c2230" font-weight="bold">
+    SHA-1
+  </text>
+</svg>
