@@ -28,6 +28,10 @@ def hash():
     # Output for fetch(), which will update the output textarea
     return output
 
+# About route
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
