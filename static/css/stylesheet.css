@@ -54,7 +54,7 @@ body {
 }
 
 .menu a {
-    padding: 8px 8px 8px 32px;
+    padding: 40px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     white-space: nowrap;
@@ -101,7 +101,7 @@ body {
     inset -60px 0 20px #0FF;*/
 }
 
-h1 {
+h1,h2 {
     color:#F80;
     text-align: center;
     justify-self: flex-start;
@@ -142,15 +142,20 @@ textarea {
     min-height:250px;
     text-align:left;
     border-radius: 10px;
-    border: 3px solid #FFF;
+    border: 4px solid #333232;
+}
+
+#output {
+    margin: 1% 5px;
+    min-height: 20px;
 }
 
 textarea:hover {
-    border:3px solid rgb(247, 202, 150);
+    border: 4px solid rgb(247, 202, 150);
 }
 
 textarea:focus {
-    border: 3px solid #F80;
+    border: 4px solid #F80;
 }
 
 button {
@@ -171,4 +176,14 @@ button:hover {
 
 button:active {
     box-shadow: var(--glow-active)
+}
+
+.hash_container {
+    height: 100%;
+    padding: 0px 5%;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }

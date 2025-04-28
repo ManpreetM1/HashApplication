@@ -47,9 +47,12 @@
             <button type="submit">Click</button>
         </form>
 
-        <textarea id="output" name="output" rows="4" cols="50" readonly>{{ output }}</textarea>
+        <div class = "hash_container">
+            <h2>Hashed Output</h2>
+            <textarea id="output" name="output" rows="4" cols="50" readonly>{{ output }}</textarea>
+    
+        </div>
     </div>
-
     <script>
         //Uses AJAX to prevent having to reload the entire page every form submission only updating output
         document.getElementById('form').addEventListener('submit', async function (e) {
