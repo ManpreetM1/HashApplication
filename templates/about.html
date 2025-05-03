@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang = en>
 <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, inital-scale=1.0"/>
+    <title>Hash Application</title>
+    <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+    <script src="../static/js/menu-script.js" defer></script>
 </head>
 
 <body>
-    <h1>
-        Example Text
-    </h1>
-    <button onclick = "decrypt()">decrypt</button>
-    <button onclick = "encrypt()">encrypt</button>
-    <button onclick = "populate()">populate</button>
-    <script src = "scripts/encryption.js"></script>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+    <div id="menu" class="menu">
+        <a href="{{ url_for('home')  }}">Home</a>
+        <a>Upload a file</a>
+    </div>
+
+    <div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
+    <div class="container">
+        <h1>
+            About
+        </h1>
+        <span>
+            This is a hashing application.
+        </span>
+    </div>
 </body>
 
 </html>

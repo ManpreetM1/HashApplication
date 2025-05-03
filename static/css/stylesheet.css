@@ -7,6 +7,7 @@
         inset 0 0 10px #F80,
         0 0 20px #F80;
     --transition-menu: 0.3s ease;
+    --standard-border: 8px solid #333232;
 }
 
 body {
@@ -54,18 +55,22 @@ body {
 }
 
 .menu a {
-    padding: 8px 8px 8px 32px;
+    padding: 40px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     white-space: nowrap;
-    color: #fff;
+    color: #F80;
     display: block;
     transition: var(--transition-menu);
   }
 
 .menu.open {
     width: 200px;
-    border-right: 8px solid #333232;
+    border-right: var(--standard-border);
+}
+
+#file-input, #file-name {
+    display: none;
 }
 
 .overlay {
@@ -93,7 +98,7 @@ body {
     align-items: center;
     min-height: 1000px;
     border-radius: 30px;
-    border:8px solid #333232;
+    border: var(--standard-border);
     /*box-shadow: 0 0 60px 30px #FFF, 
     0 0 100px 60px #F0F,
     0 0 140px 90px #0FF,
@@ -101,7 +106,7 @@ body {
     inset -60px 0 20px #0FF;*/
 }
 
-h1 {
+h1,h2,span {
     color:#F80;
     text-align: center;
     justify-self: flex-start;
@@ -142,15 +147,20 @@ textarea {
     min-height:250px;
     text-align:left;
     border-radius: 10px;
-    border: 3px solid #FFF;
+    border: 4px solid #333232;
+}
+
+#output {
+    margin: 1% 5px;
+    min-height: 20px;
 }
 
 textarea:hover {
-    border:3px solid rgb(247, 202, 150);
+    border: 4px solid rgb(247, 202, 150);
 }
 
 textarea:focus {
-    border: 3px solid #F80;
+    border: 4px solid #F80;
 }
 
 button {
@@ -171,4 +181,14 @@ button:hover {
 
 button:active {
     box-shadow: var(--glow-active)
+}
+
+.hash_container {
+    height: 100%;
+    padding: 10px 5%;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
