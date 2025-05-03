@@ -7,6 +7,7 @@
         inset 0 0 10px #F80,
         0 0 20px #F80;
     --transition-menu: 0.3s ease;
+    --standard-border: 8px solid #333232;
 }
 
 body {
@@ -65,7 +66,11 @@ body {
 
 .menu.open {
     width: 200px;
-    border-right: 8px solid #333232;
+    border-right: var(--standard-border);
+}
+
+#file-input, #file-name {
+    display: none;
 }
 
 .overlay {
@@ -93,7 +98,7 @@ body {
     align-items: center;
     min-height: 1000px;
     border-radius: 30px;
-    border:8px solid #333232;
+    border: var(--standard-border);
     /*box-shadow: 0 0 60px 30px #FFF, 
     0 0 100px 60px #F0F,
     0 0 140px 90px #0FF,
@@ -180,7 +185,7 @@ button:active {
 
 .hash_container {
     height: 100%;
-    padding: 0px 5%;
+    padding: 10px 5%;
     display: flex;
     width: 100%;
     flex-direction: column;

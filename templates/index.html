@@ -19,9 +19,12 @@
 
    <div id="menu" class="menu">
     <a href="{{ url_for('about') }}">About</a>
-    <a>Upload a file</a>
+    <a id="upload" href="#">Upload a file</a>
    </div>
 
+   <input type="file" id ="file-input"/>
+
+   <div class="file-name" id="file-name"></div>
 
    <div id="overlay" class="overlay" onclick="closeMenu()"></div>
 
@@ -50,9 +53,9 @@
         <div class = "hash_container">
             <h2>Hashed Output</h2>
             <textarea id="output" name="output" rows="4" cols="50" readonly>{{ output }}</textarea>
-    
         </div>
     </div>
+
     <script>
         //Uses AJAX to prevent having to reload the entire page every form submission only updating output
         document.getElementById('form').addEventListener('submit', async function (e) {
@@ -70,6 +73,54 @@
             document.getElementById('output').value = data;
         });
     </script>
-    
+    <script>
+        const upload = document.getElementById('upload');
+        const fileInput = document.getElementById('file-input');
+        const fileName = document.getElementById('file-name');
+        const selectAlgo = document.getElementById('hash');
+
+        upload.addEventListener('click', function() {
+            event.preventDefault();
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function() {
+            const selectedFile = fileInput.files[0];
+            if(selectedFile) {
+                fileName.textContent = `Selected file: ${selectedFile.name}`;
+                uploadFile(selectedFile);
+            }
+        });
+
+        //Asynchronously uploads file using Fetch API to send to flask backend
+        async function uploadFile(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('hash_algorithm', selectAlgo.value);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if(response.ok) {
+                    const result = await response.json();
+                    data = result.file_hash;
+                    console.log('File uploaded successfully:', result);
+                    document.getElementById('output').value = data;
+                } else {
+                    //Handles error if response is not OK
+                    const errorResult = await response.json();
+                    console.error('Error uploading file:', errorResult.message);
+                    alert('Error uploading file.');
+                }
+            } catch (error) {
+                console.error('Error uploading file:', error);
+                alert('Error uploading file');
+            }
+        }
+
+    </script>
 </body>
 </html>
