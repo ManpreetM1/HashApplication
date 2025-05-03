@@ -37,7 +37,7 @@ def hash():
 
     #Gets the appropiate function from hashlib through the algorithm selected in the html form and hashes the message given with it
     hash_func = getattr(hashlib, algorithm)
-    m = hash_func()
+    m = hash_func
     message = m(message.encode()).hexdigest()
 
     if message:
