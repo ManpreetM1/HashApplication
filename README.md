@@ -7,7 +7,8 @@ This project allows a user to hash any written message using one of the provided
 ## Live Demo
 
 You can view a live version of my project here:
-[Live Project](https://hashapplication.vercel.app/)
+[Live Project](https://hashapplication.vercel.app/)<br/>
+_Note: File uploading may not be working on this live version but does work on the source code._
 
 ## Installation
 1. Clone this repository:
