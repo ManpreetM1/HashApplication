@@ -64,12 +64,8 @@ def upload():
 
     if file.filename == '':
         return jsonify({'error': 'No selected file'}), 400
-    
-    if file:
-        if not os.path.exists(app.config['UPLOAD_FOLDER']):
-            os.makedirs(app.config['UPLOAD_FOLDER'])
 
-    # Uses temp folder for vercel
+    # Uses temp folder for vercel instead of uploads for public repo
     temp_path = os.path.join('/tmp', file.filename)
     file.save(temp_path)
 
