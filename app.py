@@ -69,10 +69,11 @@ def upload():
         if not os.path.exists(app.config['UPLOAD_FOLDER']):
             os.makedirs(app.config['UPLOAD_FOLDER'])
 
-    save_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-    file.save(save_path)
+    # Uses temp folder for vercel
+    temp_path = os.path.join('/tmp', file.filename)
+    file.save(temp_path)
 
-    hash = file_hash(save_path, algorithm)
+    hash = file_hash(temp_path, algorithm)
 
     if not hash is None:
         print(hash)
