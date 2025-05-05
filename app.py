@@ -10,13 +10,15 @@ UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def file_hash(file_path, algorithm):
+    # Sets up hashlib function to use specified algorithm
     hash_func = getattr(hashlib, algorithm)
     m = hash_func()
     try:
+        # Reads file in chunks and updates hash object with it
         with open(file_path, 'rb') as f:
             while chunk := f.read(4096):
                 m.update(chunk)
-
+        # Returns the hash of the file
         return m.hexdigest()
     except Exception as e:
         print(f"Error computing hash for file {file_path}: {e}")
@@ -69,11 +71,13 @@ def upload():
         if not os.path.exists(app.config['UPLOAD_FOLDER']):
             os.makedirs(app.config['UPLOAD_FOLDER'])
 
+    # Saves file to local directory uploads, different for live version on vercel which uses /tmp
     save_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(save_path)
 
     hash = file_hash(save_path, algorithm)
 
+    # Makes sure file hashed properly and sends success alongside hash in JSON format for the frontend to display
     if not hash is None:
         print(hash)
         return jsonify({
@@ -81,6 +85,7 @@ def upload():
             'file_hash': hash
             })
     else:
+        # If hash fails for whatever reason, sends error message alongside error code to alert the frontend fetch call
         return jsonify({'message': 'Error computing file hash'}), 500
 
 if __name__ == '__main__':

@@ -18,7 +18,6 @@
     
     <div id="menu" class="menu">
         <a href="{{ url_for('home')  }}">Home</a>
-        <a>Upload a file</a>
     </div>
 
     <div id="overlay" class="overlay" onclick="closeMenu()"></div>
@@ -27,10 +26,39 @@
         <h1>
             About
         </h1>
+        <br/>
         <span>
-            This is a hashing application.
+            This is a hashing application, which allows you to enter a message
+            or upload a file and use a specific cryptographic hashing algorithm to 
+            generate a hash. This hash can then be used for many different kinds of 
+            applications, like quickly verifying a file or message matches another instance
+            of that same file or message.
+        </span>
+        <br/><br/>
+        <span>
+            This application was created by me to provide a quicker and smoother way to calculate
+            a hash compared to some of the solutions that exist online when you search them up. A lot of
+            them don't use AJAX for a more responsive interface, or they are littered with ads and it can 
+            slow down the experience a lot. Using AJAX to update the frontend and flask in the backend to 
+            calculate the hashes allows for this app to be a much smoother and more responsive experience.
+        </span>
+        <br/><br/>
+        <span>
+            To access the file uploading you can simply open the side menu using the icon in the top left
+            and click on the upload file anchor tag. If you simply want to create a hash of a message you
+            can type or copy-paste it into the text area on the home page. In either case, there is a dropdown
+            menu where you can choose from the currently supported hashing algorithms.
+        </span>
+        <br/><br/>
+        <span>
+            You can find a link to the github repo here: 
+            <a href="https://github.com/ManpreetM1/HashApplication" target="_blank">https://github.com/ManpreetM1/HashApplication</a>
         </span>
     </div>
+
+    <footer>
+        <p>&copy; 2025 Manpreet M. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>

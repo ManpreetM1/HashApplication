@@ -12,8 +12,10 @@
 
 body {
     background-color: #F80;
-    font-family: sans-serif;
+    font-family: monospace;
+    /*font-family: Arial, Helvetica, sans-serif;*/
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height:100%;
@@ -26,6 +28,17 @@ body {
     left: 20px;
     cursor: pointer;
     z-index: 10;
+    transition: 0.2s ease;
+}
+
+@media only screen and (max-width: 900px) {
+    .menu-icon {
+        display: none;
+    }
+}
+
+.menu-icon:hover {
+    transform:scale(120%);
 }
 
 .menu-icon div {
@@ -57,7 +70,7 @@ body {
 .menu a {
     padding: 40px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     white-space: nowrap;
     color: #F80;
     display: block;
@@ -113,6 +126,10 @@ h1,h2,span {
     /*border: 2px solid #F80;*/
 }
 
+span {
+    font-size: 18px;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -123,11 +140,15 @@ form {
 
 select {
     outline: none;
+    font-family: monospace;
+    margin:5% auto;
+    text-align: center;
     width:20%; 
+    height:10%;
     background-color: #1d1d1d;
     color:#F80;
     border: 2px solid #F80;
-    border-radius: 10px;
+    border-radius: 7px;
     transition: var(--transition-glow)
 }
 
@@ -137,6 +158,10 @@ select:hover {
 
 select:focus {
     box-shadow: var(--glow-active)
+}
+
+option {
+    font-family: monospace;
 }
 
 textarea {
@@ -155,11 +180,11 @@ textarea {
     min-height: 20px;
 }
 
-textarea:hover {
-    border: 4px solid rgb(247, 202, 150);
+#message:hover {
+    border: 4px solid #f7ca96;
 }
 
-textarea:focus {
+#message:focus {
     border: 4px solid #F80;
 }
 
@@ -167,10 +192,11 @@ button {
     text-align: center;
     margin:5% auto;
     width:20%; 
+    height:10%;
     font-family: inherit;
     background-color: #1d1d1d;
     color:#F80;
-    border-radius: 10px;
+    border-radius: 7px;
     border: 2px solid #F80;
     transition: var(--transition-glow)
 }
@@ -191,4 +217,18 @@ button:active {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+span a {
+    text-decoration: none;
+    color: #f7ca96;
+}
+
+span a:hover{
+    color: #F80;
+}
+
+footer p{
+    padding-top: 20px;
+    color: #1d1d1d;
 }
