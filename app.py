@@ -66,16 +66,12 @@ def upload():
 
     if file.filename == '':
         return jsonify({'error': 'No selected file'}), 400
-    
-    if file:
-        if not os.path.exists(app.config['UPLOAD_FOLDER']):
-            os.makedirs(app.config['UPLOAD_FOLDER'])
 
-    # Saves file to local directory uploads, different for live version on vercel which uses /tmp
-    save_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-    file.save(save_path)
+    # Uses temp folder for vercel instead of uploads for public repo
+    temp_path = os.path.join('/tmp', file.filename)
+    file.save(temp_path)
 
-    hash = file_hash(save_path, algorithm)
+    hash = file_hash(temp_path, algorithm)
 
     # Makes sure file hashed properly and sends success alongside hash in JSON format for the frontend to display
     if not hash is None:
