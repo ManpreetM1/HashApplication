@@ -118,11 +118,11 @@
                     //Handles error if response is not OK
                     const errorResult = await response.json();
                     console.error('Error uploading file:', errorResult.message);
-                    alert('Error uploading file.');
+                    alert(`Error uploading file: ${errorResult.message}`);
                 }
             } catch (error) {
                 console.error('Error uploading file:', error);
-                alert('Error uploading file');
+                alert(`Error uploading file: ${error}`);
             }
         }
 

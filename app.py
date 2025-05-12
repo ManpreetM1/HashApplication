@@ -71,6 +71,10 @@ def upload():
     temp_path = os.path.join('/tmp', file.filename)
     file.save(temp_path)
 
+    if(os.path.getsize(temp_path) >= 104857600):
+        print("Error computing hash: File too Large")
+        return jsonify({'message': 'Couldnt compute hash, file is too large'}), 413
+
     hash = file_hash(temp_path, algorithm)
 
     # Makes sure file hashed properly and sends success alongside hash in JSON format for the frontend to display
