@@ -2,7 +2,7 @@
 <html lang = en>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, inital-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Hash Application</title>
     <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
@@ -19,7 +19,7 @@
 
    <div id="menu" class="menu">
     <a href="{{ url_for('about') }}">About</a>
-    <a id="upload" href="#">Upload a file</a>
+    <a id="upload" href="javascript:void(0)">Upload a file</a>
    </div>
 
    <input type="file" id ="file-input"/>
@@ -78,7 +78,7 @@
             document.getElementById('output').value = data;
         });
     </script>
-    <script>
+    <script type="module">
         const upload = document.getElementById('upload');
         const fileInput = document.getElementById('file-input');
         const fileName = document.getElementById('file-name');
@@ -99,6 +99,15 @@
 
         //Asynchronously uploads file using Fetch API to send to flask backend
         async function uploadFile(file) {
+
+            // Max file size allowed in vercel serverless functions, can be changed for local build
+            const MAX_FILE_SIZE = 4194304;
+
+            if(file && file.size > MAX_FILE_SIZE) {
+                alert(`File too large! Maximum allowed is ${MAX_FILE_SIZE / 1024 / 1024} MB.`);
+                return;
+            }
+
             const formData = new FormData();
             formData.append('file', file);
             formData.append('hash_algorithm', selectAlgo.value);
