@@ -120,7 +120,7 @@
 
                 if(response.ok) {
                     const result = await response.json();
-                    data = result.file_hash;
+                    const data = result.file_hash;
                     console.log('File uploaded successfully:', result);
                     document.getElementById('output').value = data;
                 } else {
