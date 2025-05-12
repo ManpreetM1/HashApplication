@@ -7,7 +7,8 @@ app = Flask(__name__)
 #configures the upload folder
 UPLOAD_FOLDER = 'uploads'
 
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# defaults to /tmp if no upload folder is specified, which needs to happen for vercel
+app.config['UPLOAD_FOLDER'] = os.getenv('UPLOAD_FOLDER', '/tmp')
 
 def file_hash(file_path, algorithm):
     # Sets up hashlib function to use specified algorithm
