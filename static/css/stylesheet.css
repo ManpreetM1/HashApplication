@@ -126,6 +126,21 @@ h1,h2,span {
     /*border: 2px solid #F80;*/
 }
 
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #F80;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+@keyframes spin {
+    100% {transform: rotate(360deg);}
+}
+
 span {
     font-size: 18px;
 }
@@ -180,12 +195,12 @@ textarea {
     min-height: 20px;
 }
 
-#message:hover {
-    border: 4px solid #f7ca96;
+textarea:hover {
+    border-color:#f7ca96;
 }
 
-#message:focus {
-    border: 4px solid #F80;
+textarea:focus {
+    border-color: #F80;
 }
 
 button {
