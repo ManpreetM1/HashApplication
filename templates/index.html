@@ -54,6 +54,9 @@
             <h2>Hashed Output</h2>
             <textarea id="output" name="output" rows="4" cols="50" readonly>{{ output }}</textarea>
         </div>
+
+        <div id = "loading" class="loading-spinner" style="display:none;"></div>
+
     </div>
 
     <footer>
@@ -83,6 +86,8 @@
         const fileInput = document.getElementById('file-input');
         const fileName = document.getElementById('file-name');
         const selectAlgo = document.getElementById('hash');
+        const output = document.getElementById('output');
+        const loader = document.getElementById('loading');
 
         upload.addEventListener('click', function() {
             event.preventDefault();
@@ -97,9 +102,11 @@
             }
         });
 
-        //Asynchronously uploads file using Fetch API to send to flask backend
+        // Asynchronously uploads file using Fetch API to send to flask backend
         async function uploadFile(file) {
-
+            // Calls close menu from seperate file to close the side menu after selecting 'upload a file'
+            closeMenu();
+            
             // Max file size allowed in vercel serverless functions, can be changed for local build
             const MAX_FILE_SIZE = 4194304;
 
@@ -107,6 +114,9 @@
                 alert(`File too large! Maximum allowed is ${MAX_FILE_SIZE / 1024 / 1024} MB.`);
                 return;
             }
+
+            // Shows loading spinner while file is being processed
+            loader.style.display = 'inline-block';
 
             const formData = new FormData();
             formData.append('file', file);
@@ -122,7 +132,8 @@
                     const result = await response.json();
                     const data = result.file_hash;
                     console.log('File uploaded successfully:', result);
-                    document.getElementById('output').value = data;
+                    output.value = data;
+                    output.focus();
                 } else {
                     //Handles error if response is not OK
                     const errorResult = await response.json();
@@ -133,6 +144,9 @@
                 console.error('Error uploading file:', error);
                 alert(`Error uploading file: ${error}`);
             }
+            // Hides loading spinner once file upload and processing is done
+            loader.style.display = 'none';
+
         }
 
     </script>
