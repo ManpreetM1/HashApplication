@@ -6,6 +6,13 @@
     <title>Hash Application</title>
     <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+    <script>
+        console.log(localStorage);
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+        }
+    </script>
     <script src="../static/js/menu-script.js" defer></script>
 </head>
 
