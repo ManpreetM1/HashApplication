@@ -6,10 +6,15 @@
     <title>Hash Application</title>
     <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+        }
+    </script>
     <script src="../static/js/menu-script.js" defer></script>
 </head>
 
-<body>
+<body id="body">
 
    <div class="menu-icon" onclick="toggleMenu()">
     <div></div>
@@ -20,6 +25,9 @@
    <div id="menu" class="menu">
     <a href="{{ url_for('about') }}">About</a>
     <a id="upload" href="javascript:void(0)">Upload a file</a>
+    <a id="toggle" href="javascript:void(0)">
+        <div id="circle"></div>
+    </a>
    </div>
 
    <input type="file" id ="file-input"/>
@@ -148,6 +156,21 @@
             loader.style.display = 'none';
 
         }
+
+    </script>
+    <script>
+        const toggle = document.getElementById("toggle");
+        const body = document.getElementById("body");
+        const menu = document.getElementById("menu");
+        const container = document.getElementsByClassName("container");
+
+        toggle.addEventListener("click", function() {
+            event.preventDefault();
+            body.classList.toggle('dark');
+
+            const isDark = document.body.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
 
     </script>
 </body>
