@@ -218,7 +218,7 @@ option {
 
 textarea {
     outline:none;
-    color: var(--textarea-text-color)
+    color: var(--textarea-text-color);
     width:100%;
     max-width: 500px;
     margin: 5% 5px;
