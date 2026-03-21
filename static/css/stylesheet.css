@@ -11,6 +11,7 @@
     --textarea-border: 4px solid #333232;
     --textarea-bg-color: #FFF;
     --textarea-focus-bordercolor: #F80;
+    --textarea-text-color: #333232;
     --bg-color: #F80;
     --circ-border-color: #333232;
     --footer-color: #1d1d1d;
@@ -34,6 +35,7 @@ body.dark {
     --standard-border: 8px solid #F80;
     --textarea-border: 4px solid #333232;
     --textarea-bg-color: #333232;
+    --textarea-text-color: #F80;
     --footer-color: #F80;
 }
 
@@ -216,6 +218,7 @@ option {
 
 textarea {
     outline:none;
+    color: var(--textarea-text-color)
     width:100%;
     max-width: 500px;
     margin: 5% 5px;
